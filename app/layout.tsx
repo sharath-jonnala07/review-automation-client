@@ -12,9 +12,54 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://pulse.app";
+
 export const metadata: Metadata = {
-  title: "Pulse Agent - Weekly Review Insights",
-  description: "Automated weekly product review analysis delivered to your inbox",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Pulse — AI Review Intelligence",
+    template: "%s | Pulse",
+  },
+  description:
+    "Know what customers feel before the metrics confess. Pulse turns raw app reviews into verified themes, ranked signals, and executive-ready reports in 8 minutes.",
+  keywords: [
+    "app review analysis",
+    "AI product intelligence",
+    "review automation",
+    "customer sentiment",
+    "product analytics",
+  ],
+  authors: [{ name: "Pulse" }],
+  creator: "Pulse",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: baseUrl,
+    siteName: "Pulse",
+    title: "Pulse — Know what customers feel before the metrics confess.",
+    description:
+      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports — generated in 8 minutes, not 8 hours.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pulse — Know what customers feel before the metrics confess.",
+    description:
+      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports — generated in 8 minutes, not 8 hours.",
+    creator: "@pulse_app",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+  },
 };
 
 export default function RootLayout({
