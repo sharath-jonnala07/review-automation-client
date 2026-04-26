@@ -27,7 +27,7 @@ export function ErrorState({ message }: { message?: string }) {
   return (
     <EmptyState
       title="Backend unavailable"
-      description={message ?? "Start FastAPI on http://localhost:8000 or update NEXT_PUBLIC_API_BASE_URL."}
+      description={message ?? "Configure NEXT_PUBLIC_API_BASE_URL for this deployment, or run the API locally on http://localhost:8000 during development."}
     />
   );
 }

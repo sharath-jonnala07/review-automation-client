@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "")
+  ?? (process.env.NODE_ENV === "development" ? "http://localhost:8000" : null);
 
 export class ApiError extends Error {
   status: number;
@@ -22,6 +23,10 @@ export async function apiFetch<T>(
   schema: z.ZodType<T>,
   options: RequestOptions = {},
 ): Promise<T> {
+  if (!API_BASE_URL) {
+    throw new ApiError("NEXT_PUBLIC_API_BASE_URL is not configured for this deployment.", 500);
+  }
+
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), options.timeoutMs ?? 15000);
 
