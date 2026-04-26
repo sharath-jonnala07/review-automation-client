@@ -12,18 +12,19 @@ const stages: { key: RunStatus; label: string }[] = [
 ];
 
 export function StatusTimeline({ status }: { status: RunStatus }) {
-  const activeIndex = stages.findIndex((stage) => stage.key === status);
+  const normalizedStatus = status === "pending" ? "ingesting" : status;
+  const activeIndex = stages.findIndex((stage) => stage.key === normalizedStatus);
   return (
     <div className="grid gap-2 sm:grid-cols-3 xl:grid-cols-6">
       {stages.map((stage, index) => {
         const isFailed = status === "failed" && index === Math.max(activeIndex, 0);
-        const isDone = status === "completed" || (activeIndex > index && status !== "failed");
-        const isActive = stage.key === status;
+        const isDone = normalizedStatus === "completed" || (activeIndex > index && status !== "failed");
+        const isActive = stage.key === normalizedStatus;
         return (
           <div
             key={stage.key}
             className={cn(
-              "flex items-center gap-2 rounded-md border bg-white/65 px-3 py-2 text-xs font-semibold text-[#64748B]",
+              "flex min-h-11 items-center gap-2 rounded-md border bg-white/65 px-3 py-2 text-xs font-semibold text-[#64748B]",
               isDone && "border-emerald-200 bg-emerald-50 text-emerald-800",
               isActive && "border-[#10756D]/30 bg-[#E7F3F1] text-[#10756D]",
               isFailed && "border-red-200 bg-red-50 text-red-800",

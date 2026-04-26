@@ -59,7 +59,11 @@ export default function RunDetailPage() {
           <span className="text-xs font-semibold text-[#64748B]">Run ID {run.id}</span>
         </div>
         <StatusTimeline status={run.status} />
-        {run.errorMessage ? <div className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-800">{run.errorMessage}</div> : null}
+        {run.errorMessage ? (
+          <div className="mt-4 overflow-hidden rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium leading-6 text-red-800">
+            <p className="whitespace-pre-wrap break-words">{run.errorMessage}</p>
+          </div>
+        ) : null}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -123,14 +127,14 @@ export default function RunDetailPage() {
           <div className="mt-5 space-y-3">
             {themesQuery.isLoading ? <Skeleton className="h-48" /> : themesQuery.data?.length ? themesQuery.data.map((theme) => (
               <article key={theme.id} className="rounded-lg border border-[#E6DDD0] bg-white/60 p-5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="font-semibold text-[#1A1A1A]">{theme.rank}. {theme.label}</h3>
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <h3 className="min-w-0 flex-1 break-words font-semibold text-[#1A1A1A]">{theme.rank}. {theme.label}</h3>
                   <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#10756D]">{theme.sentiment}</span>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-[#64748B]">{theme.description}</p>
                 <p className="mt-3 text-xs font-semibold text-[#334155]">{theme.reviewCount} reviews</p>
                 {theme.actionIdeas.length ? (
-                  <ul className="mt-4 space-y-3 text-sm text-[#334155]">
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-[#334155]">
                     {theme.actionIdeas.map((action, index) => (
                       <li key={`${theme.id}-${index}`} className="rounded-lg border border-[#EFE7DB] bg-[#FCFAF7] px-4 py-3">
                         <span className="font-semibold text-[#1A1A1A]">{action.title}:</span> {action.description}
