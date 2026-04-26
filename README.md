@@ -17,6 +17,12 @@ npm install
 npm run dev
 ```
 
+Create `client/.env.local` if you want to override the backend URL:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+```
+
 ## Structure
 
 ```

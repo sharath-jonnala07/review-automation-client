@@ -301,7 +301,7 @@ function Hero() {
     <section className="relative overflow-hidden px-4 pt-24 sm:px-6 lg:pt-28">
       <AuroraField />
 
-      {/* Floating ambient stat cards – visible on xl+ screens only */}
+      {/* Floating ambient stat cards, visible on xl+ screens only */}
       <motion.div
         animate={{ y: [0, -10, 0], rotate: [-1.5, 1.5, -1.5] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
@@ -373,7 +373,7 @@ function Hero() {
           <h1 className="mx-auto max-w-3xl text-[42px] font-semibold leading-[1.06] tracking-[-0.01em] text-[#1A1A1A] sm:text-[56px] lg:text-[72px]">
             Know what
             <br />
-            customers feel —
+            customers feel,
             <br />
             <span className="bg-gradient-to-r from-[#10756D] via-[#14907F] to-[#0A524C] bg-clip-text text-transparent">
               before metrics confess.

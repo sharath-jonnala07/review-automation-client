@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt =
-  "Pulse — Know what customers feel before the metrics confess.";
+  "Pulse: Know what customers feel before the metrics confess.";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -188,7 +188,7 @@ export default function OpenGraphImage() {
                 color: "#F0FAF9",
               }}
             >
-              customers feel —
+              customers feel,
             </div>
             <div
               style={{
@@ -213,7 +213,7 @@ export default function OpenGraphImage() {
                 maxWidth: 680,
               }}
             >
-              Verified quotes, ranked themes, and stakeholder-ready reports —
+              Verified quotes, ranked themes, and stakeholder-ready reports,
               generated in 8 minutes, not 8 hours.
             </div>
           </div>

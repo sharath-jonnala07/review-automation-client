@@ -17,7 +17,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://pulse.app";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Pulse — AI Review Intelligence",
+    default: "Pulse: AI Review Intelligence",
     template: "%s | Pulse",
   },
   description:
@@ -36,15 +36,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: baseUrl,
     siteName: "Pulse",
-    title: "Pulse — Know what customers feel before the metrics confess.",
+    title: "Pulse: Know what customers feel before the metrics confess.",
     description:
-      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports — generated in 8 minutes, not 8 hours.",
+      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports, generated in 8 minutes, not 8 hours.",
+    images: [{ url: "/og", width: 1200, height: 630, alt: "Pulse review intelligence preview" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pulse — Know what customers feel before the metrics confess.",
+    title: "Pulse: Know what customers feel before the metrics confess.",
     description:
-      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports — generated in 8 minutes, not 8 hours.",
+      "AI review intelligence for serious product teams. Verified quotes, ranked themes, and stakeholder-ready reports, generated in 8 minutes, not 8 hours.",
+    images: ["/og"],
     creator: "@pulse_app",
   },
   robots: {
@@ -70,9 +72,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-background text-foreground">
         {children}
       </body>
     </html>
